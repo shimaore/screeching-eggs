@@ -1,0 +1,26 @@
+{
+  "name": "screeching-eggs",
+  "version": "1.0.0",
+  "description": "Call state tracking, for the call-center and beyond",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "npm install --only=dev && rm package-lock.json && coffee -c *.coffee.md",
+    "prepublishOnly": "npm run build",
+    "pretest": "npm run build && coffee -c test/*.coffee.md",
+    "test": "mocha"
+  },
+  "author": "Stéphane Alnet <stephane@shimaore.net>",
+  "license": "Unlicense",
+  "devDependencies": {
+    "coffeescript": "^2.3.0",
+    "esl": "^9.0.0",
+    "mocha": "^5.1.1"
+  },
+  "dependencies": {
+    "normal-key": "^3.1.0",
+    "tangible": "^2.0.0"
+  }
+}
