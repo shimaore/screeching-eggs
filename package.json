@@ -1,6 +1,6 @@
 {
   "name": "screeching-eggs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Call state tracking, for the call-center and beyond",
   "main": "index.js",
   "directories": {
