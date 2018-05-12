@@ -16,21 +16,22 @@
         await @interface.remove @__bridged_key, call.key
         last_call = 0 is await @interface.count @__bridged_key
         if last_call
-          debug 'Call.unbridge', @key, call.key
+          debug 'unbridged', @key, call.key
           await @transition 'unbridge', data ? {call}
         else
-          debug 'Call.unbridge: ignore', @key, call.key
+          debug 'unbridged: ignore', @key, call.key
           false
 
 ### `on_bridge`
 
       on_bridge: (b_call,disposition) ->
+        debug 'on_bridge', @key, b_call.key, disposition
         a_call = this
 
         a_agent_key = await a_call.get_local_agent()
         b_agent_key = await b_call.get_local_agent()
 
-        debug 'Call.on_bridge', @key, a_agent_key, b_call.key, b_agent_key, disposition
+        debug 'on_bridge', @key, a_agent_key, b_call.key, b_agent_key, disposition
 
         await a_call.bridged b_call, if b_agent_key? then agent_call:b_call else call:b_call
         await b_call.bridged a_call, if a_agent_key? then agent_call:a_call else call:a_call
@@ -51,7 +52,7 @@
 ### `on_dtmf`
 
       on_dtmf: (digit) ->
-        debug 'on_bridge', @key, digit
+        debug 'on_dtmf', @key, digit
         a_call = this
         a_agent_key = await a_call.get_local_agent()
         if a_agent_key?
@@ -63,6 +64,7 @@
 ### `on_unbridge`
 
       on_unbridge: (b_call,disposition) ->
+        debug 'on_unbridge', @key, b_call.key, disposition
         a_call = this
 
         a_call.unbridged b_call
@@ -71,7 +73,7 @@
         a_agent_key = await a_call.get_local_agent()
         b_agent_key = await b_call.get_local_agent()
 
-        debug 'Call.on_unbridge', @key, a_agent_key, b_call.key, b_agent_key, disposition
+        debug 'on_unbridge', @key, a_agent_key, b_call.key, b_agent_key, disposition
 
 If the call was transfered, clear the list of matching calls (used by `unbridge_except`).
 
@@ -107,12 +109,13 @@ If the call was transfered,
         return
 
       on_hangup: (disposition) ->
+        debug 'on_hangup', @key, disposition
         a_call = this
 
         a_agent_key = await a_call.get_local_agent()
         b_agent_key = await a_call.get_remote_agent()
 
-        debug 'Call.on_hangup', @key, a_agent_key, b_agent_key, disposition
+        debug 'on_hangup', @key, a_agent_key, b_agent_key, disposition
 
 If the call was transfered, clear the list of matching calls (used by `unbridge_except`).
 
