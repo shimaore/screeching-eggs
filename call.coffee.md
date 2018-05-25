@@ -41,11 +41,11 @@
 
         if a_agent_key?
           a_agent = new @Agent a_agent_key
-          await a_agent.on_bridge b_call, disposition
+          await a_agent.on_bridge b_call, disposition, a_call
 
         if b_agent_key?
           b_agent = new @Agent b_agent_key
-          await b_agent.on_bridge a_call, disposition
+          await b_agent.on_bridge a_call, disposition, b_call
 
         return
 
@@ -84,11 +84,11 @@ Remove the other call leg from each agent's list.
 
         if a_agent_key?
           a_agent = new @Agent a_agent_key
-          await a_agent.on_unbridge b_call, disposition
+          await a_agent.on_unbridge b_call, disposition, a_call
 
         if b_agent_key?
           b_agent = new @Agent b_agent_key
-          await b_agent.on_unbridge a_call, disposition
+          await b_agent.on_unbridge a_call, disposition, b_call
 
 And remove the link to the remote agent as well.
 
