@@ -31,7 +31,7 @@ The main goal is to keep track of the agent that might be connected to a call (e
           digit = body['DTMF-Digit']
 
           a_call = new Call a_uuid
-          await a_call.dtmf digit
+          await a_call.on_dtmf digit
           return
 
         client.on 'CHANNEL_HANGUP_COMPLETE', foot ({body}) ->

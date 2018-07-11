@@ -57,7 +57,7 @@
         a_agent_key = await a_call.get_local_agent()
         if a_agent_key?
           a_agent = new @Agent a_agent_key
-          await a_agent.dmtf digit
+          await a_agent.on_dtmf digit
 
         return
 
