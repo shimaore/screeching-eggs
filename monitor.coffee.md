@@ -2,7 +2,7 @@ The main goal is to keep track of the agent that might be connected to a call (e
 
     monitor = (wrapper,Call) ->
 
-      wrapper.on 'connect', (client) ->
+      wrapper.on 'connect', foot (client) ->
 
         client.on 'CHANNEL_BRIDGE', foot ({body}) ->
           a_uuid = body['Bridge-A-Unique-ID']
@@ -47,8 +47,10 @@ In case we get `UNBRIDGE` and `CHANNEL_COMPLETE` at the same time, let `UNBRIDGE
           await a_call.on_hangup disposition
           return
 
-        client.event_json 'CHANNEL_HANGUP_COMPLETE', 'DTMF', 'CHANNEL_BRIDGE', 'CHANNEL_UNBRIDGE'
+        await client.event_json 'CHANNEL_HANGUP_COMPLETE', 'DTMF', 'CHANNEL_BRIDGE', 'CHANNEL_UNBRIDGE'
         return
+
+      return
 
     module.exports = monitor
     nextTick = -> new Promise (resolve) -> process.nextTick resolve
