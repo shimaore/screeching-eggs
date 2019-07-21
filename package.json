@@ -10,17 +10,18 @@
     "build": "npm install --only=dev && rm package-lock.json && coffee -c *.coffee.md",
     "prepublishOnly": "npm run build",
     "pretest": "npm run build && coffee -c test/*.coffee.md",
-    "test": "mocha"
+    "test": "nyc mocha"
   },
   "author": "Stéphane Alnet <stephane@shimaore.net>",
   "license": "Unlicense",
   "devDependencies": {
     "coffeescript": "^2.4.1",
-    "esl": "^9.0.1",
-    "mocha": "^5.2.0"
+    "esl": "^10.0.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1"
   },
   "dependencies": {
-    "normal-key": "^3.1.0",
+    "normal-key": "^3.2.0",
     "tangible": "^3.1.0"
   }
 }
