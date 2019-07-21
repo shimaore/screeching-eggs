@@ -15,12 +15,12 @@
   "author": "Stéphane Alnet <stephane@shimaore.net>",
   "license": "Unlicense",
   "devDependencies": {
-    "coffeescript": "^2.3.0",
-    "esl": "^9.0.0",
-    "mocha": "^5.1.1"
+    "coffeescript": "^2.4.1",
+    "esl": "^9.0.1",
+    "mocha": "^5.2.0"
   },
   "dependencies": {
     "normal-key": "^3.1.0",
-    "tangible": "^2.0.0"
+    "tangible": "^3.1.0"
   }
 }
